@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — GymPunk</title>
+<meta name="description" content="How the GymPunk app handles your data. Политика конфиденциальности GymPunk.">
+<style>
+  :root { color-scheme: dark; }
+  body { margin: 0; background: #000; color: #E0D9F6; font: 16px/1.6 -apple-system, system-ui, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 24px 16px 64px; }
+  a { color: #6ECBF5; }
+  h1, h2 { color: #C252E1; line-height: 1.25; }
+  h3 { color: #586AE2; }
+  code { background: #121018; padding: 1px 5px; border-radius: 4px; }
+  .card { background: #0A0A0F; border: 1px solid #2A2356; border-radius: 12px; padding: 4px 16px; margin: 16px 0; }
+  nav a { margin-right: 16px; }
+  hr { border: 0; border-top: 1px solid #2A2356; margin: 40px 0; }
+</style>
+</head>
+<body>
+<main>
+  <nav><a href="../">GymPunk</a><a href="../terms/">Terms</a><a href="../licenses/">Licenses</a><a href="#ru">Русский</a></nav>
+
+  <h1>Privacy Policy</h1>
+  <p><strong>Last updated: 19 October 2026</strong></p>
+  <p>This policy describes what the GymPunk mobile app does with information, based on what the app’s code actually does today. GymPunk is an independent, open-source project (<a href="https://github.com/MrTolerant/GymPunk">github.com/MrTolerant/GymPunk</a>). It is not operated by a company with a postal address; the way to reach us is listed under <a href="#contact">Contact</a>.</p>
+
+  <div class="card">
+    <h2>In short</h2>
+    <ul>
+      <li>Your training data lives in a local database <strong>on your device</strong>.</li>
+      <li>Apple Health is read <strong>only after you tap Connect and grant permission</strong>. Health data is never sold, never used for advertising, and never shared with other users.</li>
+      <li>The app contains <strong>no advertising SDK, no analytics SDK and no crash-reporting SDK</strong>.</li>
+      <li>Cloud sync exists only in builds configured with a backend (details below). A separate, optional <strong>iCloud Drive backup</strong> goes to your own iCloud account.</li>
+      <li>We do not sell personal data.</li>
+    </ul>
+  </div>
+
+  <h2>1. Data stored on your device</h2>
+  <p>The app keeps the following in on-device storage (SQLite and app preferences). It does not leave the device unless you use one of the optional features described in sections 4–7:</p>
+  <ul>
+    <li>Profile choices: display name (optional), goal, experience, training days, injuries you note, language, units, plan preferences.</li>
+    <li>Workout history: exercises, sets, weights, reps, effort, cardio time/distance/level, notes, session feedback, a derived daily readiness score.</li>
+    <li>Gym and equipment you mark as available, including optional photos of custom equipment.</li>
+    <li>Food diary entries (calories and macros) and pain logs that you enter.</li>
+    <li>Body measurements and optional progress photos that you add.</li>
+    <li>Health metrics you import from Apple Health or an export file (see section 2).</li>
+  </ul>
+  <p>Deleting the app removes this data from the device. <em>Settings → Reset all</em> erases it inside the app.</p>
+
+  <h2>2. Apple Health</h2>
+  <p>On iOS, GymPunk can read data from Apple Health. The app asks for access only when you start a connect or import action (for example in onboarding, on the Targets tab, or in Health import), and iOS shows its own permission sheet. You choose which types to allow, and you can change this at any time in <em>iOS Settings → Health → Data Access &amp; Devices</em>.</p>
+  <p>The types the app may request to <strong>read</strong>: heart rate, heart-rate variability, resting heart rate, body mass, height, VO₂ max, body-fat percentage, step count, active energy, sleep analysis, date of birth and biological sex. It may also request permission to <strong>write</strong> completed workouts and their active energy to Apple Health.</p>
+  <p>Purpose: estimating daily readiness, adapting training load, showing heart rate during a workout, and logging workouts. Health data is processed on your device. It is not used for advertising or marketing, not sold, and not shared with other users. Raw Apple Health metrics are <em>not</em> part of the cloud sync (section 5) and are not in the iCloud backup file (section 4); a derived readiness score stored on a workout may be.</p>
+  <p>You can also import an Apple Health XML export or a Fitbod CSV file that you pick yourself; these files are read on the device.</p>
+  <p>If you use the Apple Watch companion, heart-rate data moves between your watch and your phone using Apple’s on-device connectivity; the app does not send it to a server.</p>
+
+  <h2>3. Camera, photos and notifications</h2>
+  <ul>
+    <li><strong>Camera / photo library</strong>: used only when you attach a photo (custom equipment, progress photos, nutrition) or in developer builds for experimental barbell-speed capture. Photos stay on the device; the app does not upload image files. A synced equipment record can contain the local file path of its photo, not the picture itself.</li>
+    <li><strong>Notifications</strong>: local notifications only (for example “rest is over”). The app does not register for remote push notifications.</li>
+  </ul>
+
+  <h2>4. Optional iCloud Drive backup (iOS)</h2>
+  <p>In builds that include the iCloud module, the app writes a JSON backup of your training data into <strong>your own iCloud Drive container for GymPunk</strong>. It is on by default once you are signed in to iCloud and can be switched off in <em>Settings → Connections → iCloud backup</em>. The backup contains workouts, sets, nutrition settings, food logs, gym profiles and pain logs, plus a random per-install ID. It is stored by Apple under your Apple ID; we cannot read it and no GymPunk server is involved. Manage or delete it in <em>iOS Settings → [your name] → iCloud → Manage Storage</em>.</p>
+
+  <h2>5. Optional cloud sync (hosted backend)</h2>
+  <p>The app includes a client for a hosted backend (<a href="https://supabase.com/privacy">Supabase</a>). It is active <strong>only in builds that are configured with a backend address</strong>; in a build without one, the app is fully offline and nothing in this section applies.</p>
+  <p>In a configured build, on launch the app creates an <strong>anonymous account</strong> (no email or password) and syncs in the background when the network is available. If you enter an email in <em>Settings → Account</em>, we send a sign-in (magic) link through the backend’s auth service and attach the email to that account so you can sign in on another device.</p>
+  <p>What is synced, as one JSON record per item, tied to your account ID and protected so that each account can read only its own records:</p>
+  <ul>
+    <li>Profile (display name, goal, experience, training days, injuries, language, units, plan preferences)</li>
+    <li>Workouts and logged sets (including the derived readiness score and notes)</li>
+    <li>Equipment records (including custom equipment and the local photo path)</li>
+    <li>Program enrolments and the current training block (“mesocycle”)</li>
+  </ul>
+  <p>Not synced: raw Apple Health metrics, food diary, pain logs, body measurements, and photo files.</p>
+  <p><strong>Control.</strong> There is no separate on/off switch for sync in a configured build. <em>Settings → Account → Sign out</em> ends the current session and local data stays on the device; a later launch may create a new anonymous account and sync again. Deleting synced records is not self-service in the app yet — see <a href="#retention">Retention and deletion</a>.</p>
+
+  <h2>6. Community features (public by design)</h2>
+  <p>If you create a challenge or post a comment or rating in the Social area (in a configured build), that content — title, goal, text, stars, week and your account ID — is stored on the backend and is <strong>visible to other users</strong>, for example in challenge lists, comment threads and leaderboards. Do not post anything you would not want others to read. Your workout log and health data are not part of this.</p>
+
+  <h2>7. Network requests that are not your data</h2>
+  <ul>
+    <li><strong>Exercise technique videos/images</strong> may be downloaded from public storage on the same backend. Like any request, this reveals your IP address and device type to that host.</li>
+    <li><strong>App updates</strong>: the app can check for and download over-the-air JavaScript updates from Expo (<code>u.expo.dev</code>). Expo receives standard request data such as the app version, platform and update channel.</li>
+    <li><strong>Links</strong> (App Store rating page, this website, GitHub) open in the system browser or App Store under those services’ own policies.</li>
+  </ul>
+
+  <h2>8. Purchases</h2>
+  <p>In-app purchases are not live. The app contains the RevenueCat SDK, which starts only in builds configured with a RevenueCat key. When active, payments are processed by Apple; RevenueCat receives an app user ID and purchase receipts to determine entitlement. GymPunk never sees your payment card.</p>
+
+  <h2>9. What we do not do</h2>
+  <ul>
+    <li>No advertising SDKs, no ad identifiers, no tracking across other companies’ apps or sites.</li>
+    <li>No analytics or crash-reporting SDK in the app. (Apple may give developers aggregated crash or usage statistics if you enabled sharing in iOS settings; we do not receive personal data that way.)</li>
+    <li>No selling of personal data and no sharing of Health data for advertising or with data brokers.</li>
+  </ul>
+
+  <h2 id="retention">10. Retention and deletion</h2>
+  <ul>
+    <li><strong>On device</strong>: until you delete the app or use <em>Settings → Reset all</em>.</li>
+    <li><strong>iCloud backup</strong>: until you delete it in iOS iCloud storage settings.</li>
+    <li><strong>Cloud sync records and community posts</strong>: kept until deleted. “Reset all” and “Sign out” do not delete server records. To ask for deletion, email us or open an issue (see <a href="#contact">Contact</a>); do not include health or other sensitive details in a public issue; we will reply there with how to proceed.</li>
+  </ul>
+
+  <h2>11. Children</h2>
+  <p>GymPunk is not directed at children under 16 (or the minimum age in your country). Please do not create an account for a child.</p>
+
+  <h2>12. Changes</h2>
+  <p>When the app’s behavior changes, this page is updated and the “Last updated” date changes. The history is public in the repository.</p>
+
+  <h2 id="contact">13. Contact</h2>
+  <p>Questions or requests: email <a href="mailto:1l9p8v6+gympunk@gmail.com">1l9p8v6+gympunk@gmail.com</a>, or open an issue at <a href="https://github.com/MrTolerant/GymPunk/issues">github.com/MrTolerant/GymPunk/issues</a>. We do not publish a postal address or a company name because there is no registered entity behind the project at this time.</p>
+
+  <hr>
+
+  <section id="ru" lang="ru">
+    <h1>Политика конфиденциальности</h1>
+    <p><strong>Обновлено: 19 октября 2026</strong></p>
+    <p>Здесь описано, что приложение GymPunk делает с данными — по тому, как оно устроено в коде сегодня. GymPunk — независимый проект с открытым кодом (<a href="https://github.com/MrTolerant/GymPunk">github.com/MrTolerant/GymPunk</a>). За ним нет компании с почтовым адресом; связь — через GitHub Issues (см. «Контакты»).</p>
+
+    <div class="card">
+      <h2>Коротко</h2>
+      <ul>
+        <li>Тренировочные данные хранятся в локальной базе <strong>на устройстве</strong>.</li>
+        <li>Apple Health читается <strong>только после нажатия «Подключить» и вашего разрешения</strong>. Данные о здоровье не продаются, не используются для рекламы и не показываются другим пользователям.</li>
+        <li>В приложении <strong>нет рекламных, аналитических и crash-report SDK</strong>.</li>
+        <li>Облачная синхронизация работает только в сборках с настроенным сервером (ниже). Отдельная необязательная <strong>резервная копия в iCloud Drive</strong> идёт в ваш собственный iCloud.</li>
+        <li>Персональные данные не продаются.</li>
+      </ul>
+    </div>
+
+    <h2>1. Данные на устройстве</h2>
+    <p>В локальном хранилище (SQLite и настройки): профиль (имя — по желанию, цель, опыт, дни тренировок, травмы, язык, единицы, настройки плана); история тренировок (упражнения, подходы, вес, повторы, усилие, время/дистанция/уровень кардио, заметки, оценка сессии, расчётный балл готовности); выбранное оборудование и необязательные фото своего оборудования; дневник питания и записи о боли; замеры тела и фото прогресса; метрики здоровья, импортированные из Apple Health или файла. Без ваших действий (разделы 4–7) они с устройства не уходят. Удаление приложения стирает эти данные; <em>Настройки → Сбросить всё</em> стирает их внутри приложения.</p>
+
+    <h2>2. Apple Health</h2>
+    <p>Доступ запрашивается только когда вы сами запускаете подключение или импорт (онбординг, вкладка «Цели», импорт Health); iOS показывает собственное окно разрешений. Выбрать типы данных и отозвать доступ можно в <em>Настройки iOS → Здоровье → Доступ к данным</em>.</p>
+    <p><strong>Чтение</strong>: пульс, вариабельность пульса, пульс покоя, масса тела, рост, VO₂ max, процент жира, шаги, активная энергия, сон, дата рождения и биологический пол. <strong>Запись</strong> (если разрешите): завершённые тренировки и их активная энергия.</p>
+    <p>Цель: оценка готовности, подстройка нагрузки, пульс во время тренировки, запись тренировок. Данные обрабатываются на устройстве, не используются для рекламы, не продаются и не показываются другим. Сырые метрики Apple Health не входят ни в облачную синхронизацию, ни в файл iCloud-копии; расчётный балл готовности, сохранённый в тренировке, — может. Файл экспорта Apple Health (XML) или Fitbod (CSV), который вы выбираете сами, читается на устройстве. С Apple Watch пульс передаётся между часами и телефоном средствами Apple, на сервер приложение его не отправляет.</p>
+
+    <h2>3. Камера, фото, уведомления</h2>
+    <p>Камера и медиатека — только когда вы прикрепляете фото (оборудование, прогресс, питание) или в dev-сборках для экспериментального замера скорости штанги. Файлы фото приложение не загружает; в синхронизируемой записи оборудования может быть локальный путь к фото, но не сама картинка. Уведомления — только локальные («отдых закончился»); регистрации для push-уведомлений нет.</p>
+
+    <h2>4. Необязательная копия в iCloud Drive (iOS)</h2>
+    <p>В сборках с iCloud-модулем приложение пишет JSON-копию тренировочных данных в <strong>ваш собственный контейнер iCloud Drive</strong>. По умолчанию включено, когда вы вошли в iCloud; выключается в <em>Настройки → Подключения → Копия iCloud</em>. Внутри: тренировки, подходы, настройки питания, дневник питания, профили зала, записи о боли и случайный ID установки. Хранит файл Apple под вашим Apple ID; мы прочитать его не можем, сервера GymPunk тут нет. Удалить — <em>Настройки iOS → [ваше имя] → iCloud → Управлять хранилищем</em>.</p>
+
+    <h2>5. Необязательная облачная синхронизация</h2>
+    <p>В приложении есть клиент размещённого сервера (<a href="https://supabase.com/privacy">Supabase</a>). Он включён <strong>только в сборках с заданным адресом сервера</strong>; без него приложение полностью офлайн, и этот раздел не применяется.</p>
+    <p>В такой сборке при запуске создаётся <strong>анонимный аккаунт</strong> (без почты и пароля), и в фоне, когда есть сеть, идёт синхронизация. Если вы укажете email в <em>Настройки → Аккаунт</em>, через сервис авторизации сервера придёт ссылка для входа, а email привяжется к этому аккаунту — чтобы войти с другого устройства.</p>
+    <p>Синхронизируется (по одной JSON-записи на объект, привязано к ID аккаунта; каждый аккаунт читает только свои записи): профиль; тренировки и подходы (с расчётным баллом готовности и заметками); записи оборудования (с локальным путём к фото); записи программ и текущий блок тренировок. <strong>Не синхронизируется</strong>: сырые метрики Apple Health, дневник питания, записи о боли, замеры тела, файлы фото.</p>
+    <p><strong>Управление.</strong> Отдельного выключателя синхронизации в такой сборке нет. «Выйти» в <em>Настройки → Аккаунт</em> завершает сессию, локальные данные остаются; при следующем запуске может быть создан новый анонимный аккаунт и синхронизация возобновится. Удаление серверных записей пока не самообслуживание — см. раздел 10.</p>
+
+    <h2>6. Публичные функции сообщества</h2>
+    <p>Если в такой сборке вы создаёте челлендж, комментарий или оценку в разделе «Соцсеть», этот контент (название, цель, текст, звёзды, неделя и ID вашего аккаунта) хранится на сервере и <strong>виден другим пользователям</strong> — в списках челленджей, комментариях, рейтингах. Не публикуйте то, что не хотите показывать другим. Журнал тренировок и данные о здоровье сюда не входят.</p>
+
+    <h2>7. Сетевые запросы без ваших данных</h2>
+    <p>Видео/картинки техники упражнений могут скачиваться из публичного хранилища на том же сервере (хосту видны IP-адрес и тип устройства). Обновления: приложение может проверять и скачивать JavaScript-обновления «по воздуху» у Expo (<code>u.expo.dev</code>) — Expo получает стандартные данные запроса (версия приложения, платформа, канал). Ссылки (страница оценки App Store, этот сайт, GitHub) открываются в системном браузере/App Store по их собственным политикам.</p>
+
+    <h2>8. Покупки</h2>
+    <p>Встроенные покупки пока не запущены. В приложении есть SDK RevenueCat; он стартует только в сборках с ключом RevenueCat. Когда активен: платежи обрабатывает Apple, RevenueCat получает ID пользователя приложения и квитанции для определения доступа. Данных вашей карты GymPunk не видит.</p>
+
+    <h2>9. Чего мы не делаем</h2>
+    <p>Нет рекламных SDK и рекламных идентификаторов, нет отслеживания между чужими приложениями и сайтами. Нет аналитического и crash-report SDK. (Apple может давать разработчикам агрегированную статистику сбоев, если вы включили её в настройках iOS; персональных данных мы так не получаем.) Мы не продаём персональные данные и не передаём данные о здоровье для рекламы или брокерам данных.</p>
+
+    <h2>10. Хранение и удаление</h2>
+    <p>На устройстве — пока вы не удалите приложение или не нажмёте «Сбросить всё». Копия iCloud — пока вы не удалите её в настройках хранилища iCloud. Серверные записи синхронизации и публичные посты — до удаления; «Сбросить всё» и «Выйти» серверные записи не удаляют. Чтобы запросить удаление, создайте issue по ссылке из «Контактов» и не указывайте в публичном issue данные о здоровье и другие чувствительные сведения — ответим там же, как действовать дальше.</p>
+
+    <h2>11. Дети</h2>
+    <p>GymPunk не предназначен для детей младше 16 лет (или минимального возраста в вашей стране). Не создавайте аккаунт для ребёнка.</p>
+
+    <h2>12. Изменения</h2>
+    <p>При изменении поведения приложения эта страница обновляется, меняется дата «Обновлено». История изменений открыта в репозитории.</p>
+
+    <h2>13. Контакты</h2>
+    <p>Вопросы и запросы: <a href="mailto:1l9p8v6+gympunk@gmail.com">1l9p8v6+gympunk@gmail.com</a> или issue на <a href="https://github.com/MrTolerant/GymPunk/issues">github.com/MrTolerant/GymPunk/issues</a>. Почтовый адрес и название компании мы не публикуем: за проектом сейчас нет зарегистрированного юридического лица.</p>
+  </section>
+</main>
+</body>
+</html>
